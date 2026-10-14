@@ -565,6 +565,23 @@
     .blob { display: none; }
   }
 </style>
+<script>
+  // PostHog Cloud (EU), loaded through the /ingest proxy in vercel.json
+  (function () {
+    var s = document.createElement('script');
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.src = '/ingest/static/array.js';
+    s.onload = function () {
+      window.posthog.init('phc_xFkLjfR8UB4gJnVV97U5tWWB4nYEe5hNh3v33xVGcUeQ', {
+        api_host: '/ingest',
+        ui_host: 'https://eu.posthog.com',
+        person_profiles: 'identified_only'
+      });
+    };
+    document.head.appendChild(s);
+  })();
+</script>
 </head>
 <body>
 <div class="blob blob-a" aria-hidden="true"></div>
