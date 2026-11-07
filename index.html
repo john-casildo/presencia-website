@@ -80,9 +80,11 @@
   }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; text-decoration: none; color: var(--text); }
   .brand-mark {
-    width: 40px; height: 40px; border-radius: 12px; background: var(--accent);
-    display: grid; place-items: center; color: #fff; font-weight: 800; box-shadow: var(--raised-sm);
+    width: 44px; height: 44px; border-radius: 13px; background: var(--bg);
+    display: grid; place-items: center; box-shadow: var(--raised-sm);
   }
+  .brand-mark img { width: 20px; height: auto; display: block; margin-left: 2px; }
+  .brand-word { height: 27px; width: auto; display: block; }
   .nav-links { display: flex; gap: 16px; align-items: center; }
   /* Desktop links sit in an inset (pressed-in) track; the current section rises as a raised pill,
      like the app's segmented control */
@@ -163,10 +165,7 @@
     display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px;
     padding: 40px; border-radius: 32px; background: var(--bg); box-shadow: var(--raised); margin-bottom: 32px;
   }
-  .wordmark {
-    font-family: var(--serif); font-size: clamp(56px, 10vw, 110px); line-height: 1; font-style: italic; font-weight: 400;
-    color: #d3d9e3;
-  }
+  .wordmark { display: block; height: clamp(48px, 8vw, 84px); width: auto; max-width: 100%; }
   .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .pill-tag {
     padding: 8px 16px; border-radius: 999px; background: var(--bg); box-shadow: var(--raised-sm);
@@ -595,9 +594,9 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#">
-      <span class="brand-mark" aria-hidden="true">P</span>
-      Presencia
+    <a class="brand" href="#" aria-label="Presencia, inicio">
+      <span class="brand-mark" aria-hidden="true"><img src="/logo-mark.svg" alt="" width="20" height="22"></span>
+      <img class="brand-word" src="/logo-wordmark.svg" alt="Presencia" width="132" height="27">
     </a>
     <nav class="nav-links" aria-label="Principal">
       <div class="nav-track">
@@ -890,7 +889,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-panel">
-      <span class="wordmark" aria-hidden="true">Presencia</span>
+      <img class="wordmark" src="/logo-wordmark.svg" alt="Presencia" width="969" height="198">
       <div class="pill-row">
         <span class="pill-tag">iPhone y Android</span>
         <span class="pill-tag">Para grupos pequeños</span>
