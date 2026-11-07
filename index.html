@@ -249,6 +249,8 @@
   footer { padding: 24px 0 56px; color: var(--text-3); font-size: 14px; }
   .foot { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   .foot a { color: var(--text-2); text-decoration: none; }
+  .policy-link { margin-top: 16px; }
+  .policy-link a { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; min-height: 48px; }
 
   /* Responsive */
   @media (min-width: 880px) {
@@ -361,11 +363,15 @@
   /* Store badges: two-line label like the official store badges; the pair sits on its own row */
   .store-row { display: flex; flex-wrap: wrap; gap: 12px; flex-basis: 100%; }
   .cta-card .store-row { justify-content: center; }
-  .btn-store { flex-direction: column; align-items: flex-start; gap: 0; min-height: 56px; padding: 8px 22px; line-height: 1.15; }
+  .btn-store { gap: 12px; min-height: 56px; padding: 8px 22px 8px 18px; line-height: 1.15; }
+  .store-logo { width: 26px; height: 26px; flex: none; fill: currentColor; }
+  .store-text { display: flex; flex-direction: column; align-items: flex-start; }
   .btn-store small { font-size: 11px; font-weight: 500; opacity: .85; }
-  .btn-store strong { font-size: 17px; font-weight: 700; }
+  .btn-store strong { font-size: 17px; font-weight: 700; white-space: nowrap; }
   @media (max-width: 560px) {
-    .store-row .btn-store { flex: 1 1 0; width: auto; align-items: center; padding: 8px 12px; }
+    .store-row .btn-store { flex: 1 1 0; width: auto; gap: 8px; padding: 8px 10px; }
+    .store-logo { width: 22px; height: 22px; }
+    .btn-store strong { font-size: 15px; }
   }
   .btn-primary.is-soon::before { display: none; }
 
@@ -628,8 +634,8 @@
       <p class="lead">Presencia te permite tomar asistencia durante o después de la reunión, registrar las actividades del grupo y enviar el informe a tu pastor en un solo paso.</p>
       <div class="cta-row" id="descargar">
         <div class="store-row">
-          <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><small>Próximamente en</small><strong>App Store</strong></span>
-          <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><small>Próximamente en</small><strong>Google Play</strong></span>
+          <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><svg class="store-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="store-text"><small>Próximamente en</small><strong>App Store</strong></span></span>
+          <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><svg class="store-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg><span class="store-text"><small>Próximamente en</small><strong>Google Play</strong></span></span>
         </div>
         <a class="btn" href="#como-funciona">Ver cómo funciona</a>
       </div>
@@ -827,6 +833,7 @@
         <div>
           <h2>Los datos de tu grupo, <em>con cuidado</em></h2>
           <p>La asistencia de tus miembros es información sensible. Así la cuida Presencia.</p>
+          <p class="policy-link"><a href="/privacidad">Lee la política de privacidad completa</a></p>
         </div>
         <ul class="trust-list">
           <li><span class="check" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Cada miembro entra con su propia contraseña, que le genera su líder.</li>
@@ -871,8 +878,8 @@
         <p>Presencia es la forma más sencilla de llevar el registro de tu grupo pequeño y reportarlo a tiempo.</p>
         <div class="cta-row">
           <div class="store-row">
-            <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><small>Próximamente en</small><strong>App Store</strong></span>
-            <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><small>Próximamente en</small><strong>Google Play</strong></span>
+            <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><svg class="store-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span class="store-text"><small>Próximamente en</small><strong>App Store</strong></span></span>
+            <span class="btn btn-primary btn-store is-soon" aria-disabled="true"><svg class="store-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg><span class="store-text"><small>Próximamente en</small><strong>Google Play</strong></span></span>
           </div>
         </div>
       </div>
@@ -895,7 +902,7 @@
   <div class="wrap foot">
     <span>© 2026 Presencia · Hecho para líderes de grupos pequeños</span>
     <nav aria-label="Pie de página">
-      <a href="#privacidad">Privacidad</a> &nbsp;·&nbsp; <a href="#preguntas">Preguntas frecuentes</a> &nbsp;·&nbsp; <a href="#">Soporte</a>
+      <a href="/privacidad">Política de privacidad</a> &nbsp;·&nbsp; <a href="#preguntas">Preguntas frecuentes</a> &nbsp;·&nbsp; <a href="#">Soporte</a>
     </nav>
   </div>
 </footer>

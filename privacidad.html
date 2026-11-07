@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidad · Presencia</title>
+<meta name="description" content="Cómo Presencia trata los datos personales del panel web y de la app, conforme a la Ley 8968 de Costa Rica.">
+<meta name="theme-color" content="#eceef1">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #eceef1;
+    --shadow-dark: #c2c8d4;
+    --shadow-light: #ffffff;
+    --accent: #4a7fd4;
+    --text: #1e2733;
+    --text-2: #5a6577;
+    --text-3: #7a8599;
+    --raised-sm: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+    --raised: 8px 8px 20px var(--shadow-dark), -8px -8px 20px var(--shadow-light);
+    --inset: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
+    --serif: "Cormorant Garamond", Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 56px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; text-decoration: none; color: var(--text); }
+  .brand-mark {
+    width: 40px; height: 40px; border-radius: 12px; background: var(--accent);
+    display: grid; place-items: center; color: #fff; font-weight: 800; box-shadow: var(--raised-sm);
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px;
+    border-radius: 999px; background: var(--bg); color: var(--text); font-weight: 600; font-size: 15px;
+    text-decoration: none; box-shadow: var(--raised-sm);
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .btn:active { transform: scale(0.97); box-shadow: var(--inset); }
+  .lucide { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card { border-radius: 28px; padding: 32px 24px; background: var(--bg); box-shadow: var(--raised); }
+  @media (min-width: 640px) { .card { padding: 44px 48px; } }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 6vw, 46px); line-height: 1.05; margin-bottom: 14px; }
+  .intro { color: var(--text-2); font-size: 17px; margin-bottom: 8px; }
+  section { margin-top: 28px; }
+  h2 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  p, li { color: var(--text-2); }
+  p + p { margin-top: 10px; }
+  ul { padding-left: 20px; display: grid; gap: 8px; }
+  strong { color: var(--text); font-weight: 600; }
+  a { color: var(--accent); font-weight: 600; }
+  .updated { margin-top: 12px; font-size: 14px; color: var(--text-3); }
+  footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--text-3); }
+</style>
+<script>
+  // PostHog Cloud (EU), loaded through the /ingest proxy in vercel.json
+  (function () {
+    var s = document.createElement('script');
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.src = '/ingest/static/array.js';
+    s.onload = function () {
+      window.posthog.init('phc_xFkLjfR8UB4gJnVV97U5tWWB4nYEe5hNh3v33xVGcUeQ', {
+        api_host: '/ingest',
+        ui_host: 'https://eu.posthog.com',
+        person_profiles: 'identified_only'
+      });
+    };
+    document.head.appendChild(s);
+  })();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      Presencia
+    </a>
+    <a class="btn" href="/">
+      <svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      Volver al inicio
+    </a>
+  </div>
+
+  <main class="card">
+    <h1>Política de privacidad</h1>
+    <p class="intro">Esta política explica cómo Presencia trata sus datos personales, conforme a la Ley 8968, Ley de Protección de la Persona frente al Tratamiento de sus Datos Personales, de Costa Rica. Aplica a este sitio, al panel web y a la app Presencia para Android y iPhone.</p>
+
+    <section>
+      <h2>Quién es el responsable</h2>
+      <p>Presencia es un proyecto para la Iglesia Adventista en Costa Rica, que ayuda a registrar la vida de los grupos pequeños. Para cualquier consulta escriba a <a href="mailto:presenciano.reply@gmail.com">presenciano.reply@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>Qué datos guardamos</h2>
+      <ul>
+        <li><strong>Datos de cuenta:</strong> nombre, correo, teléfono, rol y la organización a la que pertenece (grupo, iglesia, distrito, campo o unión). Su contraseña se guarda cifrada.</li>
+        <li><strong>Datos de miembros de grupos pequeños:</strong> nombre, apellidos y datos de contacto que el líder registra, y el grupo al que pertenecen.</li>
+        <li><strong>Asistencia y actividades:</strong> quién asistió a cada reunión, las actividades realizadas, sus cantidades y montos, y la asistencia a los cultos del sábado.</li>
+        <li><strong>Visitantes:</strong> nombre, contacto y registro de sus visitas a los grupos.</li>
+        <li><strong>Estudios bíblicos y dúos misioneros:</strong> el nombre de la persona que recibe el estudio (puede no ser usuaria de la app), las lecciones completadas y las actividades del dúo.</li>
+        <li><strong>Aportes:</strong> los montos de ofrendas y actividades que registra el miembro. La app no procesa pagos.</li>
+        <li><strong>Evidencias de asignaciones de aspirantes:</strong> archivos y notas que el aspirante sube como respaldo de su trabajo, y su bitácora de práctica.</li>
+        <li><strong>Datos académicos de los aspirantes:</strong> nombre, CIF, carrera, sede, período y correo institucional, que recibimos de UNADECA (sistema Class Limitless) solo para gestionar sus prácticas y su cuenta. Si dejan de estar matriculados, su cuenta se desactiva.</li>
+        <li><strong>Registros técnicos de seguridad:</strong> invitaciones, restablecimientos de contraseña y accesos, para proteger las cuentas.</li>
+        <li><strong>Analítica de uso:</strong> en este sitio, en el panel web y en la app usamos analítica de producto (PostHog, en la Unión Europea): eventos de uso, reportes de errores y repetición de sesión con los textos e imágenes tapados, para encontrar fallos y mejorar la herramienta. Usamos un identificador anónimo del dispositivo y, si usted inicia sesión, el identificador de su cuenta, sin su nombre, correo ni teléfono. En la app se puede desactivar en Ajustes → Privacidad → “Compartir estadísticas de uso y errores”.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Para qué los usamos</h2>
+      <p>Para registrar la asistencia y las actividades de los grupos pequeños, para el acompañamiento pastoral y para estadísticas internas de la iglesia. No vendemos sus datos ni los usamos para publicidad.</p>
+    </section>
+
+    <section>
+      <h2>Quién los ve</h2>
+      <ul>
+        <li>El líder de un grupo ve su grupo.</li>
+        <li>El anciano ve su iglesia.</li>
+        <li>El pastor ve su distrito.</li>
+        <li>La administración de campo y de unión ve su campo o unión.</li>
+        <li>La Dirección UNADECA y los aspirantes ven las iglesias que tienen asignadas.</li>
+      </ul>
+      <p style="margin-top: 10px;">Para operar el servicio usamos proveedores: Supabase (base de datos y acceso, en EE. UU.), Vercel (alojamiento del sitio), Brevo (envío de correos) y PostHog (analítica del sitio, del panel web y de la app, en la Unión Europea). UNADECA (sistema Class Limitless) nos envía los datos de matrícula de los aspirantes.</p>
+    </section>
+
+    <section>
+      <h2>Dónde se guardan y por cuánto tiempo</h2>
+      <p>Los datos se guardan en servidores ubicados en Estados Unidos. Los conservamos mientras la cuenta o el grupo estén activos, y se mantienen en copias de seguridad por un tiempo limitado.</p>
+      <p>La app guarda en el teléfono una copia de los datos del grupo del último año para poder consultarlos sin conexión. Esa copia se borra al cerrar sesión o desde Ajustes → “Borrar datos guardados en este teléfono”.</p>
+    </section>
+
+    <section>
+      <h2>Sus derechos</h2>
+      <p>Usted puede pedir acceso a sus datos, su rectificación, su cancelación o supresión, y oponerse a su tratamiento (derechos ARCO de la Ley 8968). Escriba a <a href="mailto:presenciano.reply@gmail.com">presenciano.reply@gmail.com</a> desde el correo de su cuenta. Para borrar su cuenta, vea <a href="https://presencia-lider.vercel.app/eliminar-cuenta">cómo eliminar su cuenta</a>.</p>
+    </section>
+
+    <section>
+      <h2>Menores de edad</h2>
+      <p>Los datos de menores los registra el líder del grupo, y se espera que cuente con la autorización de sus padres o encargados. Si desea corregir o borrar datos de un menor, escríbanos.</p>
+    </section>
+
+    <section>
+      <h2>Cambios a esta política</h2>
+      <p>Podemos actualizar esta política; la versión vigente siempre estará en esta página.</p>
+      <p class="updated">Última actualización: 7 de noviembre de 2026</p>
+    </section>
+  </main>
+
+  <footer>© 2026 Presencia · Hecho para líderes de grupos pequeños</footer>
+</div>
+</body>
+</html>
