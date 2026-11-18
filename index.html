@@ -40,8 +40,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,300..700&display=swap">
 <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <style>
   :root {
     /* Final design: sda-style-board.html. "Soft Clay" background with neumorphic light/shadow */
@@ -226,6 +228,16 @@
   .step-num .lucide { width: 22px; height: 22px; stroke-width: 2; }
   .feature h3 { font-size: 20px; margin-bottom: 8px; }
   .feature p { color: var(--text-2); font-size: 16px; }
+  /* Real app screenshot, cropped into an inset "screen well" at the top of each feature card */
+  .feature-shot {
+    margin: 0 0 20px; padding: 6px; border-radius: 18px; background: var(--bg-deep); box-shadow: var(--inset);
+    aspect-ratio: 2 / 1; overflow: hidden;
+  }
+  .feature-shot img {
+    display: block; width: 100%; height: 100%; border-radius: 13px;
+    object-fit: cover; object-position: 50% var(--y, 0%); transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .feature:hover .feature-shot img { transform: scale(1.04); }
 
   /* Steps */
   .steps { counter-reset: step; }
@@ -290,6 +302,44 @@
   .foot a { color: var(--text-2); text-decoration: none; }
   .policy-link { margin-top: 16px; }
   .policy-link a { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; min-height: 48px; }
+
+  /* Screenshot gallery: horizontal scroll-snap strip of real app screens */
+  .gallery { overflow-x: clip; }
+  .gallery .section-head { margin-bottom: 8px; }
+  .g-track {
+    list-style: none; margin: 0; display: flex; gap: clamp(20px, 3vw, 36px);
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+    padding: 32px max(16px, calc((100vw - 1120px) / 2 + 16px)) 40px;
+    scroll-padding-inline: max(16px, calc((100vw - 1120px) / 2 + 16px));
+  }
+  .g-track::-webkit-scrollbar { display: none; }
+  .g-track:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; border-radius: 24px; }
+  .g-item { flex: none; width: clamp(200px, 22vw, 240px); scroll-snap-align: start; }
+  .g-phone {
+    aspect-ratio: 9 / 19.5; border-radius: 34px; padding: 10px; background: var(--bg); box-shadow: var(--raised);
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease;
+  }
+  .g-phone img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 25px; box-shadow: var(--flat); }
+  .g-item:hover .g-phone { transform: translateY(-8px); box-shadow: var(--raised-hover); }
+  .g-cap { margin: 18px 4px 0; color: var(--text-2); font-size: 15px; line-height: 1.4; }
+  .g-cap strong { display: block; color: var(--text); font-size: 17px; margin-bottom: 2px; }
+  /* Subtle controls: a thin inset progress line plus small round arrow buttons */
+  .g-controls { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+  .g-progress {
+    flex: 0 1 160px; height: 4px; margin-right: 8px; border-radius: 999px; background: var(--bg);
+    box-shadow: inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light); overflow: hidden;
+  }
+  .g-thumb { display: block; height: 100%; width: 30%; border-radius: inherit; background: var(--accent-soft); opacity: .7; transform-origin: left; }
+  .g-btn {
+    width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+    background: var(--bg); color: var(--text-3); box-shadow: var(--flat); transition: color .2s ease, box-shadow .15s ease, transform .15s ease, opacity .2s ease;
+  }
+  .g-btn:hover { color: var(--accent); }
+  .g-btn:active { box-shadow: var(--inset); transform: scale(.95); }
+  .g-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .g-btn .lucide { width: 18px; height: 18px; }
+  .g-btn[disabled] { opacity: .35; pointer-events: none; }
+  @media (hover: none) { .g-btn { display: none; } .g-controls { justify-content: center; } .g-progress { margin-right: 0; } }
 
   /* Responsive */
   @media (min-width: 880px) {
@@ -734,31 +784,37 @@
       </div>
       <div class="grid features">
         <article class="feature">
+          <figure class="feature-shot" style="--y:72%"><img src="screens/asistencia.jpg" alt="Lista de asistencia con miembros marcados" width="720" height="1560" loading="lazy" decoding="async"></figure>
           <div class="icon-tile" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="m16 11 2 2 4-4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
           <h3>Asistencia rápida</h3>
           <p>Marca presente, ausente o justificado con un toque. Todos los miembros activos aparecen listos desde el inicio.</p>
         </article>
         <article class="feature">
+          <figure class="feature-shot" style="--y:44%"><img src="screens/resumen.jpg" alt="Resumen de la reunión antes de enviarla" width="720" height="1560" loading="lazy" decoding="async"></figure>
           <div class="icon-tile" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
           <h3>Registro de reuniones</h3>
           <p>Sigue el flujo de asistencia, actividades y resumen, y envía todo de una vez.</p>
         </article>
         <article class="feature">
+          <figure class="feature-shot" style="--y:31%"><img src="screens/historial.jpg" alt="Historial de reuniones por trimestre" width="720" height="1560" loading="lazy" decoding="async"></figure>
           <div class="icon-tile" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
           <h3>Historial e informes</h3>
           <p>Consulta tus reuniones por trimestre, el detalle de cada una y los totales por tipo de actividad.</p>
         </article>
         <article class="feature">
+          <figure class="feature-shot" style="--y:64%"><img src="screens/inicio.jpg" alt="Aviso de culto de sábado registrado con 6 presentes" width="720" height="1560" loading="lazy" decoding="async"></figure>
           <div class="icon-tile" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M10 9h4"/><path d="M12 7v5"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="m18 9 3.52 2.147a1 1 0 0 1 .48.854V19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6.999a1 1 0 0 1 .48-.854L6 9"/><path d="M6 21V7a1 1 0 0 1 .376-.782l5-3.999a1 1 0 0 1 1.249.001l5 4A1 1 0 0 1 18 7v14"/></svg></div>
           <h3>Culto de sábado</h3>
           <p>Registra también la asistencia al culto de sábado, separada de las reuniones de GP. Cada miembro puede marcar la suya y tú la confirmas.</p>
         </article>
         <article class="feature">
+          <figure class="feature-shot" style="--y:29%"><img src="screens/miembros.jpg" alt="Lista de miembros del grupo" width="720" height="1560" loading="lazy" decoding="async"></figure>
           <div class="icon-tile" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></div>
           <h3>Miembros</h3>
           <p>Agrega y archiva miembros, y genera para cada uno su propia contraseña para que use la app.</p>
         </article>
         <article class="feature">
+          <figure class="feature-shot" style="--y:82%"><img src="screens/inicio.jpg" alt="Acceso a actividades misioneras: dúos y estudios" width="720" height="1560" loading="lazy" decoding="async"></figure>
           <div class="icon-tile" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div>
           <h3>Dúos y estudios bíblicos</h3>
           <p>Organiza los dúos misioneros del grupo y lleva el registro de los estudios bíblicos de cada miembro.</p>
@@ -821,6 +877,60 @@
         <span class="arrow" aria-hidden="true">→</span>
         <div class="level">Pastor<small>Recibe tu informe</small></div>
       </div>
+    </div>
+  </section>
+
+  <section class="gallery open-section" id="pantallas" aria-labelledby="pantallas-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="pantallas-title">Así se ve <em>Presencia</em></h2>
+        <p>Pantallas reales de la app. Desliza para recorrerla.</p>
+      </div>
+    </div>
+    <div class="g-viewport">
+      <ul class="g-track" tabindex="0" aria-label="Pantallas de la app">
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/inicio.jpg" alt="Pantalla de inicio en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Inicio</strong>Tu grupo y lo pendiente de hoy</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/asistencia.jpg" alt="Pantalla de asistencia en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Asistencia</strong>Un toque por miembro</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/agregar-visita.jpg" alt="Pantalla de visitas en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Visitas</strong>Registra a quien te visita</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/actividades.jpg" alt="Pantalla de actividades en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Actividades</strong>De tu unión, tu iglesia y tu grupo</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/resumen.jpg" alt="Pantalla de resumen en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Resumen</strong>Revisa todo antes de enviar</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/exito.jpg" alt="Pantalla de listo en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>¡Listo!</strong>El informe llega a tu pastor</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/historial.jpg" alt="Pantalla de historial en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Historial</strong>Tus reuniones por trimestre</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/miembros.jpg" alt="Pantalla de miembros en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Miembros</strong>Tu lista siempre al día</p>
+        </li>
+        <li class="g-item">
+          <div class="g-phone"><img src="screens/codigo-suplente.jpg" alt="Pantalla de suplente en Presencia" width="720" height="1560" loading="lazy" decoding="async"></div>
+          <p class="g-cap"><strong>Suplente</strong>Acceso por 24 horas</p>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap g-controls">
+      <div class="g-progress" aria-hidden="true"><span class="g-thumb"></span></div>
+      <button class="g-btn" type="button" data-dir="-1" aria-label="Pantalla anterior"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="g-btn" type="button" data-dir="1" aria-label="Pantalla siguiente"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
     </div>
   </section>
 
@@ -967,6 +1077,31 @@
       btn.addEventListener(ev, function () { btn.classList.remove('pressed'); });
     });
   });
+
+  // Screenshot gallery: prev/next buttons scroll the strip by most of its visible width
+  (function () {
+    var track = document.querySelector('.g-track');
+    if (!track) return;
+    var btns = document.querySelectorAll('.g-btn');
+    var thumb = document.querySelector('.g-thumb');
+    var smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      btns[0].disabled = track.scrollLeft <= 2;
+      btns[1].disabled = track.scrollLeft >= max;
+      var vis = track.clientWidth / track.scrollWidth;
+      thumb.style.width = (vis * 100) + '%';
+      thumb.style.transform = 'translateX(' + (max > 0 ? (track.scrollLeft / max) * (1 / vis - 1) * 100 : 0) + '%)';
+    }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        track.scrollBy({ left: Number(b.dataset.dir) * track.clientWidth * 0.8, behavior: smooth });
+      });
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
 
   // Scroll reveal: tag content blocks, then fade them in as they enter the viewport
   var revealTargets = document.querySelectorAll('.section-head, .feature, .step, .role, .problem-card, .trust, .faq details, .cta-card');
